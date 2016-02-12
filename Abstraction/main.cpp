@@ -19,20 +19,48 @@ public:
     {
         return total;
     }
-private:
+protected:
     //hidden data from outside world
     int total;
+};
+
+class Subtractor: public Adder{
+public:
+    Subtractor(int i=0)
+    {
+        total = i;
+    }
+
+    void subNum(int number)
+    {
+        total -= number;
+    }
+
+};
+
+class Calc: public Subtractor{
+public:
+    Calc(int i=0)
+    {
+        total = i;
+    }
 };
 
 int main()
 {
     Adder a;
+    Calc c;
 
     a.addNum(10);
     a.addNum(20);
     a.addNum(30);
-    cout << "Total " << a.getTotal() << endl;
 
+    c.addNum(10);
+    c.addNum(13);
+    c.subNum(2);
+
+    cout << "Total " << a.getTotal() << endl;
+    cout << "Total " << c.getTotal() << endl;
     cout << "Hey Beautiful, love ya!" << endl;
     return 0;
 }
