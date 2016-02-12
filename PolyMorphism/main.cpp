@@ -1,4 +1,5 @@
 #include <iostream>
+#include "math.h"
 
 using namespace std;
 
@@ -12,7 +13,7 @@ public:
         width = w;
         height = h;
     }
-    int area()
+    virtual int area()
     {
         cout << "Parent class area :" << endl;
         return 0;
@@ -24,7 +25,7 @@ public:
     Rectangle(int w=0, int h=0):Shape(w, h){}
     int area()
     {
-        cout << "Rectangle class area :" << endl;
+        cout << "Rectangle class area: " << width * height << endl;
         return(width * height);
     }
 };
@@ -34,8 +35,17 @@ public:
     Triangle( int w=0, int h=0):Shape(w,h){}
     int area()
     {
-        cout << "Triangle class area :" <<endl;
+        cout << "Triangle class area: " << width * height / 2 << endl;
         return(width * height / 2);
+    }
+};
+
+class Circle: public Shape{
+public:
+    Circle(int r=0):Shape(r,0){}
+    int area()
+    {
+        cout << "Circle class area: " << M_PI * pow(width, 2) << endl;
     }
 };
 
@@ -45,6 +55,7 @@ int main()
     Shape *shape;
     Rectangle rec(10,7);
     Triangle tri(10,5);
+    Circle cir(10);
 
     //store the address of Rectangle
     shape = &rec;
@@ -54,6 +65,11 @@ int main()
     //store the address of triangle
     shape = &tri;
     //call triangle area
+    shape->area();
+
+    //store the address of circle
+    shape = &cir;
+    //call circle area
     shape->area();
 
     cout << "Hey Beautiful, love ya!" << endl;
