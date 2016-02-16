@@ -4,3 +4,4 @@
 */*.depend
 */*.workspace.layout
 *.workspace.layout
+*/*.dat

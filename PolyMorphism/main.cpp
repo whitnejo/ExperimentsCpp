@@ -13,11 +13,7 @@ public:
         width = w;
         height = h;
     }
-    virtual int area()
-    {
-        cout << "Parent class area :" << endl;
-        return 0;
-    }
+    virtual int area() = 0;
 };
 
 class Rectangle: public Shape{
@@ -46,6 +42,7 @@ public:
     int area()
     {
         cout << "Circle class area: " << M_PI * pow(width, 2) << endl;
+        return M_PI * pow(width, 2);
     }
 };
 
